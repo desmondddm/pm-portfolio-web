@@ -266,8 +266,8 @@ export default function App() {
                 What I'm looking for
               </span>
               <p className="text-[15px] text-[#5A6B85] leading-relaxed">
-                Associate PM or PM at a startup or scale-up in Singapore. Especially interested
-                in govtech — Open Government Products is at the top of my list. I bring architectural
+                Associate PM or PM at a startup or scale-up in Singapore — especially where
+                individual product decisions still have real weight. I bring architectural
                 fluency to talk to engineers as a peer, automated research workflows most PMs can't
                 build, and enough scar tissue from {PRODUCTS.length} shipped products to know when to cut scope.{" "}
                 <a
