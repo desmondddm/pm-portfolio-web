@@ -44,7 +44,7 @@ export default function App() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                Product Builder · Singapore
+                Product Management · Singapore
               </motion.span>
 
               <motion.h1
@@ -63,7 +63,10 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.15 }}
               >
-                Aeronautics degree. I don't write code. I scope problems, architect solutions, and ship production software using AI agents — Claude Code, Cursor, Lovable. {PRODUCTS.length} products shipped. One deployed to{" "}
+                Aeronautics degree. I don't write code.
+                I scope problems, architect solutions, and ship production software using AI agents.{" "}
+                <span className="font-semibold text-[#3D4F6A]">{PRODUCTS.length} products shipped</span>
+                {" "}— one deployed to{" "}
                 <span className="font-semibold text-[#3D4F6A]">20,000 users</span>
                 {" "}at Changi Airport Group. Each one hit a different wall. Each wall made me a better product thinker.
               </motion.p>
@@ -220,8 +223,8 @@ export default function App() {
               That's PM work — I just didn't have the title or the permission.
             </p>
             <p className="text-[15px] text-[#1A2B4A] leading-relaxed">
-              I don't write code. I understand architecture — databases, APIs, auth flows, deployment — and I use
-              AI agents to build production software. {PRODUCTS.length} products shipped this way. The result: I can prototype and validate
+              I understand architecture — databases, APIs, auth flows, deployment — and I use
+              AI agents (Claude Code, Cursor, Lovable) to build production software. {PRODUCTS.length} products shipped this way. The result: I can prototype and validate
               at the speed of thought. No waiting for engineering. No spec that sits in a backlog.
             </p>
 
@@ -276,6 +279,31 @@ export default function App() {
               </p>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════ BACKGROUND */}
+      <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-16 border-t border-[#E2E6F0]">
+        <div className="max-w-3xl mx-auto">
+          <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-6 block">
+            Background
+          </span>
+          <div className="space-y-4">
+            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+              <div>
+                <div className="text-sm font-semibold text-[#1A2B4A]">Implementation Manager (Airport Operations)</div>
+                <div className="text-sm text-[#5A6B85]">Changi Airport Group</div>
+              </div>
+              <div className="text-xs text-[#7A8BA5] font-mono">2023 – present</div>
+            </div>
+            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+              <div>
+                <div className="text-sm font-semibold text-[#1A2B4A]">B.Eng Aeronautical Engineering</div>
+                <div className="text-sm text-[#5A6B85]">Embry-Riddle Aeronautical University</div>
+              </div>
+              <div className="text-xs text-[#7A8BA5] font-mono">2018</div>
+            </div>
+          </div>
         </div>
       </section>
 
