@@ -197,6 +197,70 @@ export default function App() {
         </div>
       </section>
 
+      {/* ═══════════════════════════════════════════ CAG DEEP DIVE */}
+      <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-24 bg-white border-t border-[#E2E6F0]">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-4 block">
+              Case Study · Changi Airport Group
+            </span>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4A] leading-tight mb-6">
+              20,000 users.{" "}
+              <span className="text-[#2E6DB4]">Nobody asked me to build it.</span>
+            </h2>
+
+            <div className="space-y-6 text-[15px] text-[#5A6B85] leading-relaxed">
+              <div>
+                <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-2">The problem</div>
+                <p className="m-0">
+                  My portfolio at CAG included security promotion. Ground officers constantly asked the same question: does this bag count as unattended? The policy was clear on paper, but in practice — different sizes, different contexts, different lighting — officers made inconsistent calls. In a safety-critical environment, inconsistency is a risk.
+                </p>
+              </div>
+
+              <div>
+                <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-2">The product decision</div>
+                <p className="m-0">
+                  I knew from ground experience that the core issue was size-based judgement. AI could solve this — point a camera at a bag, get a consistent answer. I scoped the tool, architected the solution with Google Gemini's computer vision, and built it. The hardest part wasn't the technology. It was training the model against our ground knowledge: dozens of edge cases, each tested through trial and error until accuracy was reliable.
+                </p>
+              </div>
+
+              <div>
+                <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-2">Stakeholder alignment & launch</div>
+                <p className="m-0">
+                  Once I could prove accuracy to my EVP, there was little resistance. We held a launch event with stakeholders to drive initial adoption. But launch wasn't the finish line — it was the start of a sustained engagement effort.
+                </p>
+              </div>
+
+              <div>
+                <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-2">Post-launch metrics & engagement</div>
+                <p className="m-0">
+                  We tracked adoption rates, usage frequency, and whether reported incidents were genuine — the core success metric. To sustain engagement, I ran monthly quiz campaigns with vouchers. The tool is now in production use by 20,000+ Changi Airport staff.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 grid grid-cols-3 gap-4">
+              {[
+                { n: "20k+", label: "Staff deployed to" },
+                { n: "Monthly", label: "Engagement campaigns" },
+                { n: "Solo", label: "Scoped, built, launched" },
+              ].map(({ n, label }) => (
+                <div key={label} className="bg-[#F7F8FC] border border-[#E2E6F0] rounded-xl p-4 text-center">
+                  <div className="text-2xl font-bold text-[#2E6DB4]">{n}</div>
+                  <div className="text-xs text-[#7A8BA5] mt-1">{label}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ═══════════════════════════════════════════════ PM BRIDGE */}
       <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-24 bg-[#F0F2F8]">
         <div className="max-w-3xl mx-auto">

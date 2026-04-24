@@ -15,9 +15,9 @@ export const PRODUCTS = [
     outcome: "63 coaches, 8 gyms, and 36 clients on the platform.",
     tags: ["Marketplace", "Supabase", "Lovable → Cursor", "Singapore"],
     // PM portfolio
-    wall: "Getting coaches to sign up was easy — a quick email and they were in. Getting clients to search was impossible. With nobody browsing, coaches stopped showing up. I kept adding features thinking that would fix it. It didn't. You can't build your way out of a chicken-and-egg problem.",
-    wallLabel: "Demand Before Supply",
-    lesson: "In a two-sided market, distribution comes before product.",
+    wall: "This was my first build — as much a test of whether AI could help a non-technical person ship software as it was a product. I got 63 coaches onboarded, then launched. But there were no client-side interactions. Zero. I'd spent two months adding supply-side features without ever validating that clients would come. The data was right in front of me — an empty demand side — but I wasn't measuring it. I was measuring what was easy to measure: signups.",
+    wallLabel: "Measure What Matters",
+    lesson: "Don't measure supply when you haven't validated demand.",
     devHighlight: "Two-sided marketplace built solo in 2 months. Prototyped in Lovable, production-rebuilt with React + Supabase. 63 coaches, 36 clients onboarded.",
     // Dev portfolio
     category: "Marketplace", kind: "Web App", featured: false,
@@ -41,9 +41,9 @@ export const PRODUCTS = [
     outcome: "36 users. Built and shipped in 24 hours.",
     tags: ["AI", "ElevenLabs API", "Hackathon", "NLP"],
     // PM portfolio
-    wall: "The transcription software worked — speaker separation was accurate. But at the hackathon demo, the recording device couldn't capture clean audio in a room full of people. Good microphones were table stakes for this product, and the target users — people in meetings — don't carry them. I'd built something that needed hardware its users didn't have. No amount of code fixes that. Next time, I'd validate the physical environment before writing a line.",
-    wallLabel: "Code Can't Fix Physics",
-    lesson: "Validate the physical constraints before you write the code.",
+    wall: "We had 24 hours. The prioritisation call: focus entirely on speaker diarisation — the one feature no competitor did well — and deliberately cut YouTube scraping, live transcription, and language translation. That bet paid off: it worked in our controlled demo. But we'd only tested in a quiet room. In real meetings, background noise broke the separation. We'd validated the feature in a lab, not in the user's environment. The prioritisation was right. The testing environment wasn't.",
+    wallLabel: "Prioritise, Then Validate in Context",
+    lesson: "Ruthless prioritisation only works if you test in the real environment.",
     devHighlight: "Conceived, built, and shipped a working AI transcription app with speaker diarization in 24 hours. ElevenLabs API integration with long-recording support.",
     // Dev portfolio
     category: "AI", kind: "Web App", featured: false,
@@ -68,9 +68,9 @@ export const PRODUCTS = [
     outcome: "Deployed to 20,000+ staff at Changi Airport Group. Officers got a consistent, reliable decision tool.",
     tags: ["Google Gemini", "Computer Vision", "AI", "Enterprise"],
     // PM portfolio
-    wall: "The technology was the easy part. Getting the AI to give consistent answers across edge cases — a bag near a busy walkway, one partially hidden, one in poor lighting — required defining every scenario first. That's not an engineering problem. It's a product problem. Writing the rules for the AI was the same work as writing a product spec. And because it was internal, I never had to find users. They were already there.",
-    wallLabel: "Prompt Engineering = Product Thinking",
-    lesson: "When you're inside the organisation, you don't have an acquisition problem. You have a product problem.",
+    wall: "This wasn't assigned to me. My job is airport operations, and one of my portfolios was security promotion. Ground staff constantly asked: does this bag count as unattended? Different officers made different calls. I knew from experience that the core issue was size-based judgement — and that AI could solve it. The hardest part wasn't the technology. It was training the model against our ground knowledge — dozens of edge cases, tested through trial and error. Once I could prove accuracy to my EVP, there was little resistance. We held a stakeholder launch event to drive adoption, ran monthly quiz campaigns with vouchers to sustain engagement, and tracked adoption rates, usage, and whether reported incidents were genuine. The tool worked because the spec came from someone who'd seen the problem firsthand.",
+    wallLabel: "Spec From the Ground",
+    lesson: "The best product specs come from someone who's lived the problem — not someone who's read about it.",
     devHighlight: "Built and deployed an AI decision tool to 20,000+ enterprise users. Google Gemini computer vision with edge-case handling across dozens of real-world scenarios.",
     // Dev portfolio
     category: "Enterprise AI", kind: "Internal Tool", featured: true,
@@ -94,9 +94,9 @@ export const PRODUCTS = [
     outcome: "1,200+ downloads on the iOS App Store.",
     tags: ["iOS", "Fitness Tech", "Swift", "ASO"],
     // PM portfolio
-    wall: "The app worked well. But on the App Store, being good doesn't mean people find you. Discoverability runs on keywords — and I hadn't thought about keywords at build time. I ran Reddit polls to find out how lifters actually searched. Learned that on the App Store, you build twice: the product, and then how people find it.",
-    wallLabel: "Build to Be Found",
-    lesson: "On the App Store, distribution is a product problem — not a marketing one.",
+    wall: "I deliberately scoped to proven programs first — 5/3/1 and Smolov — because they were the simplest to implement and I didn't want to over-engineer an unproven product against established competitors like Hevy. That was the right call: ship fast, validate demand. But I made a different mistake. I never thought about discoverability at build time. I ran Reddit polls after launch to learn how lifters actually search — and discovered I'd missed the keywords entirely. The product worked. Nobody could find it.",
+    wallLabel: "Scope Right, Distribute Wrong",
+    lesson: "Good scoping decisions don't matter if you haven't solved distribution.",
     devHighlight: "Native iOS app built in Swift/SwiftUI. Programmable training plans with automatic progression, licensed exercise library. 1,200+ App Store downloads.",
     // Dev portfolio
     category: "iOS", kind: "iOS App", featured: false,
@@ -121,9 +121,9 @@ export const PRODUCTS = [
     outcome: "Market-validated, keyword-researched, and competition-mapped before writing a single line of code.",
     tags: ["iOS", "Hyrox", "Fitness Tech", "Crowdsourced Data"],
     // PM portfolio
-    wall: "Every previous product taught me something I got wrong. This time I applied all of it. Before writing any code, I ran keyword research on App Store search volume for Hyrox-related terms. I sized the market — Hyrox is the fastest-growing fitness event in Asia, and no dedicated pacing app existed. I mapped the competitive landscape: generic running timers, none sport-specific. Distribution strategy was locked before the UI was designed. The build took weeks, not months, because the spec was clear before I opened Xcode.",
-    wallLabel: "Market-First Building",
-    lesson: "When you know the walls, you plan the route before you start building.",
+    wall: "I started with a different idea entirely — a Hyrox training coaching app. Then I ran my AI agent pipeline: automated ASO keyword research, competition analysis, and gap identification. The data changed my direction. The pipeline showed that no dedicated pacing app existed for Hyrox, while coaching apps were saturated. I killed the original idea and pivoted to the gap. Distribution strategy, keyword field, and competitive positioning were locked before a single screen was designed. The build took weeks because the spec was clear before I started.",
+    wallLabel: "Let Data Kill Your Idea",
+    lesson: "The best product decision I made was killing my first idea based on research.",
     devHighlight: "Native iOS pacing app with real-time split tracking and crowdsourced benchmarks. Market-validated with keyword research and competitive analysis before writing any code.",
     // Dev portfolio
     category: "iOS", kind: "iOS App", featured: false,
@@ -148,9 +148,9 @@ export const PRODUCTS = [
     outcome: "30-person worship team using it every Sunday. Five apps replaced by one.",
     tags: ["iOS", "SwiftUI", "Firebase", "Internal Tool"],
     // PM portfolio
-    wall: "I wasn't trying to build a product. I was sitting in rehearsal watching our team fumble between five different apps and thought: this is one app. No market research, no business model — just a team I knew intimately and friction I could see every week. I scoped the full feature set in an afternoon and built it over the weekend. The fact that I couldn't stop myself from building it — that's the same instinct behind every other product on this page.",
-    wallLabel: "Product Instinct",
-    lesson: "The best product instinct isn't something you turn on for work. It's something you can't turn off.",
+    wall: "I scoped the feature set by mapping exactly what our 30-person team used every Sunday: five separate apps. I cut it to the five that mattered and left everything else out. After v1 shipped, the team's feedback changed two things: the metronome UI and the pitch reference tool's audio (real piano samples instead of electronic tones). Both were quality-of-experience issues I wouldn't have caught without putting the product in users' hands first. Ship, then listen.",
+    wallLabel: "Ship, Then Listen",
+    lesson: "You can scope from instinct. But you refine from user feedback.",
     devHighlight: "Replaced 5 separate tools with one native iOS app — setlist builder, chord transposition, metronome, tuner, and broadcast messaging. Scoped Saturday, shipped Monday.",
     // Dev portfolio
     category: "iOS", kind: "iOS App", featured: true,
@@ -175,9 +175,9 @@ export const PRODUCTS = [
     outcome: "Production system tracking ~40 daily check-ins across 310+ retail outlets. First paid client project.",
     tags: ["Next.js", "Firebase", "TypeScript", "Google Maps API", "Vercel"],
     // PM portfolio
-    wall: "This wasn't my product — it was a client's. For the first time I was building to someone else's spec, not my own instinct. The skill wasn't ideation or market research. It was listening, scoping correctly on the first pass, and delivering production software on a deadline. Building for yourself teaches you product taste. Building for a client teaches you product discipline.",
-    wallLabel: "Product Discipline",
-    lesson: "Building for yourself teaches taste. Building for a client teaches discipline.",
+    wall: "My first client project. Two meetings: one to discover their pain, one for UAT. In between, I scoped, quoted, and built. The client wanted email authentication for staff check-ins. I pushed back — adding login friction would kill adoption when there was no security reason for it. Staff IDs were sufficient. Nobody checks in for a colleague. That one decision probably saved the product. Building for yourself teaches taste. Building for a client teaches discipline — and the confidence to say no.",
+    wallLabel: "Know When to Push Back",
+    lesson: "The best thing you can do for a client is tell them what they don't need.",
     devHighlight: "First paid client project. Went from initial brief to production deployment. GPS geofencing, photo verification, automated reporting — all running at $0/month on free tiers. End-to-end delivery for Chinatown Foods.",
     // Dev portfolio
     category: "B2B Tool", kind: "Web App", featured: true,
