@@ -63,9 +63,7 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.15 }}
               >
-                I've independently shipped{" "}
-                <span className="font-semibold text-[#3D4F6A]">{PRODUCTS.length} products</span>
-                {" "}across health tech, fitness, AI, and enterprise — one reaching{" "}
+                Aeronautics degree. I don't write code. I scope problems, architect solutions, and ship production software using AI agents — Claude Code, Cursor, Lovable. {PRODUCTS.length} products shipped. One deployed to{" "}
                 <span className="font-semibold text-[#3D4F6A]">20,000 users</span>
                 {" "}at Changi Airport Group. Each one hit a different wall. Each wall made me a better product thinker.
               </motion.p>
@@ -78,7 +76,7 @@ export default function App() {
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-[#2E6DB4]" />
                 <span className="text-xs font-semibold text-[#2E6DB4] tracking-wide">
-                  Looking for PM roles · Singapore
+                  Open to PM roles · Singapore · Let's talk
                 </span>
               </motion.div>
 
@@ -215,19 +213,16 @@ export default function App() {
             </h2>
 
             <p className="text-[15px] text-[#5A6B85] leading-relaxed mb-3">
-              At Changi Airport Group, I spotted an operational problem — ground officers making
-              inconsistent calls on unattended bags — and built an AI tool that standardised the
-              decision. Getting it deployed to{" "}
-              <span className="font-semibold text-[#3D4F6A]">20,000 staff</span>{" "}
-              meant writing a product spec disguised as prompt rules, running edge-case testing
-              across dozens of scenarios, and building stakeholder alignment across operations teams.
-              That's PM work. I just happened to also write the code.
+              My day job at Changi Airport Group is airport operations — not software. But I kept seeing problems
+              that software could solve, and nobody was building the solutions. So I did. The AI incident reporting
+              tool wasn't assigned to me. I scoped the problem, architected the solution, got it deployed to{" "}
+              <span className="font-semibold text-[#3D4F6A]">20,000 staff</span>, and tracked adoption after launch.
+              That's PM work — I just didn't have the title or the permission.
             </p>
             <p className="text-[15px] text-[#1A2B4A] leading-relaxed">
-              Outside of CAG, I've cold-emailed clinics to sign paying customers, hit the cold-start
-              wall in a two-sided marketplace, and built a church worship app over a weekend because
-              I couldn't stop noticing the friction. {PRODUCTS.length} products. Some chased revenue. One just
-              fixed a Sunday morning. All of them taught me something about what users actually need.
+              I don't write code. I understand architecture — databases, APIs, auth flows, deployment — and I use
+              AI agents to build production software. {PRODUCTS.length} products shipped this way. The result: I can prototype and validate
+              at the speed of thought. No waiting for engineering. No spec that sits in a backlog.
             </p>
 
             {/* Three pillars */}
@@ -235,18 +230,18 @@ export default function App() {
               {[
                 {
                   icon: <Search size={18} className="text-[#2E6DB4]" />,
-                  title: "Discovery",
-                  text: "CarrotByte: cold-emailed optometrists to validate demand. CoachConnect: learned supply-side signups don't prove demand. RoxPacer: keyword research before code. Beacon: watched my team juggle five apps and scoped the fix in an afternoon.",
+                  title: "Discovery & Validation",
+                  text: "I build Claude agent pipelines that automate ASO keyword research, SEO analysis, and competitor mapping. Before writing a line for RoxPacer, I validated demand, sized the market, and confirmed no competitor existed — all through automated research. For DayOne, I ran Reddit polls to understand how lifters actually search for apps.",
                 },
                 {
                   icon: <Code2 size={18} className="text-[#2E6DB4]" />,
-                  title: "Technical Depth",
-                  text: "I write production code in Swift, React, and Python. When I say a feature is feasible in two sprints, I know — because I've built it myself. At CAG, I shipped an AI tool from prompt engineering to enterprise deployment, solo.",
+                  title: "Technical Fluency",
+                  text: "I understand architecture — databases, APIs, auth flows, deployment — but I don't hand-write code. I use AI agents to build production software. When I say a feature is feasible in two sprints, I know — because I've shipped it. My edge as a PM: I can build the prototype myself and automate research at scale.",
                 },
                 {
                   icon: <Package size={18} className="text-[#2E6DB4]" />,
-                  title: "Delivery",
-                  text: `${PRODUCTS.length} products shipped from zero to live. 20,000+ enterprise users at one. 8 paying clinics at another. 1,200+ App Store downloads at a third. 30 people using the latest every Sunday.`,
+                  title: "Scope Discipline",
+                  text: `${PRODUCTS.length} products shipped. I scope to MVP and resist over-engineering. On FieldCheck, I pushed back on email auth — staff IDs were sufficient, and login friction would have killed adoption. That's the kind of call I make: cut what doesn't serve the user.`,
                 },
               ].map(({ icon, title, text }) => (
                 <div
@@ -268,16 +263,15 @@ export default function App() {
                 What I'm looking for
               </span>
               <p className="text-[15px] text-[#5A6B85] leading-relaxed">
-                A PM role in Singapore where individual product decisions still have real weight.
-                Enterprise software, health tech, or consumer apps — ideally early to mid-stage.
-                I bring the technical depth to talk to engineers as a peer, the shipping record to
-                prove I finish what I start, and enough scar tissue from my own products to know
-                when to cut scope. If that sounds useful to your team,{" "}
+                Associate PM or PM at a startup or scale-up in Singapore. Especially interested
+                in govtech — Open Government Products is at the top of my list. I bring architectural
+                fluency to talk to engineers as a peer, automated research workflows most PMs can't
+                build, and enough scar tissue from {PRODUCTS.length} shipped products to know when to cut scope.{" "}
                 <a
                   href="mailto:desmond@mouss.ac"
                   className="text-[#2E6DB4] hover:underline"
                 >
-                  let's talk.
+                  Let's talk →
                 </a>
               </p>
             </div>
@@ -295,42 +289,17 @@ export default function App() {
                 desmond@mouss.ac · Singapore
               </div>
             </div>
-            <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-              <div className="flex items-center gap-4 flex-wrap">
-                <span className="text-[11px] text-[#7A8BA5] uppercase tracking-wider font-medium">Social</span>
-                <a href="https://www.linkedin.com/in/desmondddm" target="_blank" rel="noopener noreferrer" className="text-sm text-[#7A8BA5] hover:text-[#2E6DB4] transition-colors">LinkedIn</a>
-                <a href="mailto:desmond@mouss.ac" className="text-sm text-[#7A8BA5] hover:text-[#2E6DB4] transition-colors">Email</a>
-              </div>
-              <div className="hidden md:block w-px h-4 bg-[#E2E6F0]" />
-              <div className="flex items-center gap-4 flex-wrap">
-                <span className="text-[11px] text-[#7A8BA5] uppercase tracking-wider font-medium">Products</span>
-                {PRODUCTS.map(({ name, href }) => (
-                  href ? (
-                    <a
-                      key={name}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-[#7A8BA5] hover:text-[#2E6DB4] transition-colors"
-                    >
-                      {name}
-                    </a>
-                  ) : (
-                    <span key={name} className="text-sm text-[#7A8BA5]">{name}</span>
-                  )
-                ))}
-              </div>
+            <div className="flex items-center gap-4 flex-wrap">
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-sm text-[#7A8BA5] hover:text-[#2E6DB4] transition-colors">Resume</a>
+              <a href="https://www.linkedin.com/in/desmondddm" target="_blank" rel="noopener noreferrer" className="text-sm text-[#7A8BA5] hover:text-[#2E6DB4] transition-colors">LinkedIn</a>
+              <a href="mailto:desmond@mouss.ac" className="text-sm text-[#7A8BA5] hover:text-[#2E6DB4] transition-colors">Email</a>
             </div>
           </div>
           <div className="mt-8 pt-6 border-t border-[#E2E6F0]">
             <p className="text-sm text-[#5A6B85] mb-5">
               {PRODUCTS.length} products shipped. Looking for the team that makes it {PRODUCTS.length + 1}.{" "}
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-[#2E6DB4] hover:underline">
-                Download resume
-              </a>
-              {" · "}
               <a href="mailto:desmond@mouss.ac" className="text-[#2E6DB4] hover:underline">
-                Get in touch →
+                desmond@mouss.ac →
               </a>
             </p>
             <div className="flex items-center justify-between">

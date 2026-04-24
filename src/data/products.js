@@ -4,32 +4,6 @@
 
 export const PRODUCTS = [
   {
-    id: 1, year: "2025", name: "CarrotByte",
-    url: "carrotbyte.io", href: "https://carrotbyte.io",
-    tagline: "CRM Platform for Myopia Control Clinics",
-    status: "Live · Early Revenue",
-    statusColor: "text-emerald-700 border-emerald-200 bg-emerald-50",
-    role: "Co-founder",
-    problem: "Optometrists lacked dedicated tools to track patient myopia progression and automate follow-up — leading to missed appointments and poor patient retention.",
-    solution: "A B2B CRM built for optical clinics: myopia progress tracking, lens effectiveness analytics, and automated email & WhatsApp patient outreach. Cold-email'd our first paying clinic from scratch.",
-    outcome: "8 paying clinics signed through cold outreach. ~$1k MRR.",
-    tags: ["B2B SaaS", "CRM", "Health Tech", "WhatsApp API"],
-    // PM portfolio
-    wall: "We had an optometrist on the team who knew exactly what clinics needed. But every decision had to go through him. Every feature took months. We spent a year building before we made our first sale. The product worked. The team structure didn't.",
-    wallLabel: "Expertise Needs to Transfer",
-    lesson: "The best domain partner teaches you — not gates you.",
-    devHighlight: "Built a full B2B CRM from scratch — patient tracking, WhatsApp API integration, automated outreach. Cold outreach signed 8 paying clinics.",
-    // Dev portfolio
-    category: "B2B SaaS", kind: "Web App", featured: true,
-    stack: ["React", "Supabase", "WhatsApp API", "Stripe"], timeline: "12 months",
-    metric: { value: "8", label: "Paying clinics" },
-    metric2: { value: "~$1k", label: "MRR" },
-    results: "8 paying clinics signed via cold outreach. ~$1k MRR from nothing. Live, in production, running real clinical workflows.",
-    devLesson: "From pitch deck to paying customers in a single build.",
-    accent: "#D97757", accentDark: "#B35C3C",
-    platform: "web", iframable: true,
-  },
-  {
     id: 2, year: "2025", name: "CoachConnect",
     url: "coachconnect.sg", href: "https://coachconnect.sg",
     tagline: "Discovery Marketplace for Coaches & Clients in Singapore",
@@ -179,7 +153,7 @@ export const PRODUCTS = [
     lesson: "The best product instinct isn't something you turn on for work. It's something you can't turn off.",
     devHighlight: "Replaced 5 separate tools with one native iOS app — setlist builder, chord transposition, metronome, tuner, and broadcast messaging. Scoped Saturday, shipped Monday.",
     // Dev portfolio
-    category: "iOS", kind: "iOS App", featured: false,
+    category: "iOS", kind: "iOS App", featured: true,
     stack: ["SwiftUI", "Firebase", "Real-time sync"], timeline: "One weekend",
     metric: { value: "30", label: "Team using weekly" },
     metric2: { value: "5→1", label: "Apps replaced" },
@@ -221,8 +195,8 @@ export const PRODUCTS = [
     id: 9, year: "2026", name: "MrWhite",
     url: "suss.party", href: null,
     tagline: "Social Deduction Party Game — Jackbox-Style Multiplayer",
-    status: "In Development",
-    statusColor: "text-amber-700 border-amber-200 bg-amber-50",
+    status: "Live · App Store",
+    statusColor: "text-emerald-700 border-emerald-200 bg-emerald-50",
     role: "Solo Builder",
     problem: "Imposter-style party games require passing a single phone around or everyone downloading the same app. Both kill the momentum at a party.",
     solution: "A Jackbox-style party game: one person hosts on their iPhone, everyone else joins free in their browser via a room code. Real-time multiplayer over Socket.IO, with 200 questions across 8 themed decks. No downloads for friends.",
@@ -235,7 +209,7 @@ export const PRODUCTS = [
     devHighlight: "Full-stack real-time multiplayer across three platforms. Expo host app, React web joiner, Node/Socket.IO backend on Cloud Run. 200 questions, 8 decks, 6-phase game state machine, reconnection handling.",
     // Dev portfolio
     category: "Gaming", kind: "Cross-platform", featured: true,
-    stack: ["Expo", "React", "Node.js", "Socket.IO", "Firestore"], timeline: "In progress",
+    stack: ["Expo", "React", "Node.js", "Socket.IO", "Firestore"], timeline: "Shipped to App Store",
     metric: { value: "3", label: "Platforms" },
     metric2: { value: "200", label: "Questions" },
     results: "Full-stack multiplayer party game across iOS, web, and backend. Real-time game state machine with 6 phases, Socket.IO with reconnection grace periods, RevenueCat monetisation, 200 questions across 8 themed decks.",
@@ -245,7 +219,7 @@ export const PRODUCTS = [
   },
 ]
 
-// Featured order: FieldCheck → CAG → CarrotByte → MrWhite
-const FEATURED_ORDER = [8, 4, 1, 9]
+// Featured order: FieldCheck → CAG → MrWhite → Beacon
+const FEATURED_ORDER = [8, 4, 9, 7]
 export const FEATURED = FEATURED_ORDER.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean)
 export const REST = PRODUCTS.filter(p => !p.featured)
