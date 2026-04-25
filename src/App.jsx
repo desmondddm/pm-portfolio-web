@@ -1,32 +1,16 @@
-import { useReducer, useCallback } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown, ExternalLink, Search, Code2, Package } from "lucide-react"
 import { PRODUCTS } from "./data/products"
-import { ProductCard } from "./components/ProductCard"
 import { StatBadge } from "./components/StatBadge"
-import { TimelineConnector } from "./components/TimelineConnector"
-
-// ── State Management ──────────────────────────────────────────────────────────
-
-function reducer(state, action) {
-  if (action.type === "toggle") {
-    return state === action.id ? null : action.id
-  }
-  return state
-}
-
-// ── Animation Variants ────────────────────────────────────────────────────────
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-}
 
 // ── PM Portfolio Page ─────────────────────────────────────────────────────────
 
 export default function App() {
-  const [openId, dispatch] = useReducer(reducer, 1)
-  const onToggle = useCallback((id) => dispatch({ type: "toggle", id }), [])
+  const [expandedId, setExpandedId] = useState(null)
+  const toggle = (id) => setExpandedId(expandedId === id ? null : id)
+
+  const gridProducts = PRODUCTS.filter(p => p.id !== 4) // CAG has its own deep-dive
 
   return (
     <div className="min-h-screen bg-[#F7F8FC] text-[#1A2B4A]" style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
@@ -147,53 +131,6 @@ export default function App() {
             <StatBadge n="20k+" label="Enterprise Users" accent />
             <StatBadge n="3+" label="Years at CAG" />
           </motion.div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════ TIMELINE */}
-      <section id="products" className="px-6 md:px-12 lg:px-20 xl:px-28 py-24">
-        <div className="max-w-3xl mx-auto">
-
-          {/* Section heading */}
-          <motion.div
-            className="mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-3 block">
-              The Product Timeline
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4A] mb-3">
-              {PRODUCTS.length} products. {PRODUCTS.length} walls. Each one shaped the next.
-            </h2>
-            <p className="text-sm text-[#7A8BA5]">
-              From domain dependency to marketplace dynamics to product instinct — click any card to see the problem, the solution, and the lesson.
-            </p>
-          </motion.div>
-
-          {/* Cards + timeline line */}
-          <div className="relative">
-            <TimelineConnector />
-
-            <motion.div
-              className="space-y-5"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-            >
-              {PRODUCTS.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  isOpen={openId === product.id}
-                  onToggle={onToggle}
-                />
-              ))}
-            </motion.div>
-          </div>
         </div>
       </section>
 
@@ -346,6 +283,41 @@ export default function App() {
         </div>
       </section>
 
+      {/* ════════════════════════════════════════════════ PRODUCT GRID */}
+      <section id="products" className="px-6 md:px-12 lg:px-20 xl:px-28 py-24">
+        <div className="max-w-4xl mx-auto">
+
+          <motion.div
+            className="mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-3 block">
+              What I've Shipped
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4A] mb-3">
+              {PRODUCTS.length} products. Each one taught me something different.
+            </h2>
+            <p className="text-sm text-[#7A8BA5]">
+              Click any card to see the problem, the solution, and the lesson.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {gridProducts.map((product) => (
+              <CompactPMCard
+                key={product.id}
+                product={product}
+                isOpen={expandedId === product.id}
+                onToggle={() => toggle(product.id)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══════════════════════════════════════════════ BACKGROUND */}
       <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-16 border-t border-[#E2E6F0]">
         <div className="max-w-3xl mx-auto">
@@ -403,5 +375,109 @@ export default function App() {
       </footer>
 
     </div>
+  )
+}
+
+// ── Compact PM Card ───────────────────────────────────────────────────────────
+
+function CompactPMCard({ product, isOpen, onToggle }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+    >
+      <div
+        className="bg-white border border-[#E2E6F0] rounded-2xl overflow-hidden transition-all duration-200 hover:border-[#2E6DB4]/40 hover:shadow-md shadow-sm cursor-pointer"
+        onClick={onToggle}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onToggle()}
+      >
+        <div className="p-5">
+          {/* Meta */}
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[11px] font-mono text-[#7A8BA5]">{product.year}</span>
+            <span className="text-[#B0BAC9]">·</span>
+            <span className="text-[11px] text-[#7A8BA5]">{product.role}</span>
+          </div>
+
+          {/* Name + tagline */}
+          <h3 className="text-lg font-bold text-[#1A2B4A] leading-tight mb-1">
+            {product.name}
+          </h3>
+          <p className="text-[13px] text-[#5A6B85] mb-3 leading-relaxed">{product.tagline}</p>
+
+          {/* Status */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className={`text-[11px] border rounded-md px-2 py-0.5 ${product.statusColor}`}>
+              {product.status}
+            </span>
+            {product.href ? (
+              <a
+                href={product.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] text-[#7A8BA5] hover:text-[#2E6DB4] flex items-center gap-1 transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {product.url}
+                <ExternalLink size={10} />
+              </a>
+            ) : (
+              <span className="text-[11px] text-[#7A8BA5]">{product.url}</span>
+            )}
+          </div>
+
+          {/* Lesson punchline — always visible */}
+          <div className="pt-3 border-t border-[#E2E6F0] flex items-start justify-between gap-3">
+            <div className="flex-1 min-w-0">
+              <div className="text-[10px] font-bold text-[#7A8BA5] uppercase tracking-widest mb-1">{product.wallLabel}</div>
+              <p className="text-[13px] text-[#1A2B4A] italic leading-relaxed m-0">"{product.lesson}"</p>
+            </div>
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.25 }}
+              className="text-[#2E6DB4] flex-shrink-0 mt-1"
+            >
+              <ChevronDown size={18} />
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Expanded detail */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="border-t border-[#E2E6F0] px-5 pb-5 pt-4 space-y-4">
+                <div className="bg-[#E8F5EE] border border-[#1A8754]/25 rounded-xl p-3">
+                  <span className="text-[10px] font-bold text-[#1A8754] uppercase tracking-widest">Outcome</span>
+                  <p className="text-sm text-[#1A2B4A] mt-1.5 leading-relaxed m-0">{product.outcome}</p>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[#C0392B] uppercase tracking-widest">The Problem</span>
+                  <p className="text-sm text-[#5A6B85] mt-1.5 leading-relaxed m-0">{product.problem}</p>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[#1A8754] uppercase tracking-widest">The Solution</span>
+                  <p className="text-sm text-[#5A6B85] mt-1.5 leading-relaxed m-0">{product.solution}</p>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[#7A8BA5] uppercase tracking-widest">The Lesson — {product.wallLabel}</span>
+                  <p className="text-sm text-[#5A6B85] mt-1.5 leading-relaxed m-0">{product.wall}</p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
   )
 }
