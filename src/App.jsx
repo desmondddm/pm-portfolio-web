@@ -52,7 +52,7 @@ export default function App() {
                 <span className="font-semibold text-[#3D4F6A]">{PRODUCTS.length} products shipped</span>
                 {" "}— one deployed to{" "}
                 <span className="font-semibold text-[#3D4F6A]">20,000 users</span>
-                {" "}at Changi Airport Group. Each one hit a different wall. Each wall made me a better product thinker.
+                {" "}at Changi Airport Group. Each one forced a different product decision. Those decisions are the story.
               </motion.p>
 
               <motion.div
@@ -134,6 +134,148 @@ export default function App() {
         </div>
       </section>
 
+      {/* ════════════════════════════════════════ HOW I WORK / AIOS */}
+      <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-24 bg-[#F0F2F8] border-t border-[#E2E6F0]">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-4 block">
+              The Operating System
+            </span>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4A] leading-tight mb-6">
+              One person.{" "}
+              <span className="text-[#2E6DB4]">The output of an entire product org.</span>
+            </h2>
+
+            <p className="text-[15px] text-[#5A6B85] leading-relaxed mb-3">
+              Most product teams need separate people for research, competitive analysis, design, content, SEO, outreach, and quality oversight. I built an AI operating system that does the work of those teams — with me as the only human in the loop. The result: I ship products at a pace and breadth that shouldn't be possible for one person.
+            </p>
+            <p className="text-[15px] text-[#1A2B4A] leading-relaxed font-medium mb-8">
+              This is the kind of system I'd build for your team. Imagine your product org with AI-native workflows — where research that takes a week runs in hours, where competitive analysis updates itself, and where quality oversight audits every output before it ships.
+            </p>
+
+            {/* The comparison */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <div className="bg-white border border-[#E2E6F0] rounded-2xl p-5">
+                <div className="text-[11px] font-mono text-[#7A8BA5] tracking-[0.15em] uppercase mb-4">Traditional Product Operation</div>
+                <div className="space-y-2.5">
+                  {[
+                    "Market Researcher — sizing, trends, opportunity mapping",
+                    "Competitive Analyst — feature gaps, positioning",
+                    "Product Designer — brand, prototypes, visual identity",
+                    "Content Marketer — blogs, social, launch copy",
+                    "SEO Specialist — keywords, audits, content briefs",
+                    "Sales / Outreach — prospecting, personalised sequences",
+                    "QA Reviewer — quality checks across all outputs",
+                  ].map((role) => (
+                    <div key={role} className="text-[12px] text-[#5A6B85] flex items-start gap-2">
+                      <span className="text-[#B0BAC9] mt-0.5">+</span>
+                      <span>{role}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 pt-3 border-t border-[#E2E6F0]">
+                  <div className="text-[13px] font-semibold text-[#7A8BA5]">7+ people · weeks to months</div>
+                </div>
+              </div>
+
+              <div className="bg-[#EBF2FA] border border-[#2E6DB4]/20 rounded-2xl p-5">
+                <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-4">My AI Operating System</div>
+                <div className="space-y-2.5">
+                  {[
+                    { team: "Idea Validation", desc: "automated keyword research, competitor mining, revenue modelling" },
+                    { team: "Design Studio", desc: "brand specs, prototypes, visual identity, interaction flows" },
+                    { team: "Content Studio", desc: "editorial calendar, long-form, short-form, video scripts" },
+                    { team: "SEO & Growth", desc: "technical audits, topic clusters, content briefs, rank tracking" },
+                    { team: "Sales Outreach", desc: "prospect scraping, deep research, personalised email sequences" },
+                    { team: "Social Marketing", desc: "trend scouting, platform-native content, community engagement" },
+                    { team: "Quality Oversight", desc: "audits all team outputs, flags issues, recommends improvements" },
+                  ].map(({ team, desc }) => (
+                    <div key={team} className="text-[12px] flex items-start gap-2">
+                      <span className="text-[#2E6DB4] mt-0.5 font-bold">→</span>
+                      <span><span className="font-semibold text-[#1A2B4A]">{team}</span> <span className="text-[#5A6B85]">— {desc}</span></span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 pt-3 border-t border-[#2E6DB4]/20">
+                  <div className="text-[13px] font-semibold text-[#2E6DB4]">1 person · 50+ agents · days not weeks</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Architecture detail */}
+            <div className="mb-6">
+              <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-4">Under The Hood</div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  {
+                    icon: <Users size={18} className="text-[#2E6DB4]" />,
+                    title: "Named Agent Teams",
+                    text: "Each team has a lead (Orchestrator, Radar, Pixel, Vex, Sentinel) and specialised agents with defined roles. Agents are selected by capability — Haiku for fast lookups, Sonnet for code, Opus for strategy.",
+                  },
+                  {
+                    icon: <Cpu size={18} className="text-[#2E6DB4]" />,
+                    title: "Cross-Team Handoffs",
+                    text: "Work flows between teams via structured handoff tickets: Validation → Design (brief → prototype), Content → Social (long-form → distribution), All Teams → Oversight (outputs → audit).",
+                  },
+                  {
+                    icon: <Brain size={18} className="text-[#2E6DB4]" />,
+                    title: "Persistent Memory",
+                    text: "3-tier memory: global identity, org-wide intelligence, and team-specific state. Context persists across sessions. Decisions compound. Nothing is lost between conversations.",
+                  },
+                ].map(({ icon, title, text }) => (
+                  <div key={title} className="bg-white border border-[#E2E6F0] shadow-sm rounded-2xl p-5">
+                    <div className="w-8 h-8 rounded-lg bg-[#EBF2FA] flex items-center justify-center mb-3">
+                      {icon}
+                    </div>
+                    <div className="text-sm font-semibold text-[#1A2B4A] mb-1.5">{title}</div>
+                    <div className="text-[12px] text-[#5A6B85] leading-relaxed">{text}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Proof: real scenario */}
+            <div className="bg-white border border-[#E2E6F0] rounded-2xl p-5">
+              <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-3">Real Example — Product Validation Pipeline</div>
+              <p className="text-[13px] text-[#5A6B85] leading-relaxed mb-4 m-0">
+                I started with an idea for a Hyrox coaching app. Instead of building it, I ran the validation pipeline. Here's what the system did — and what it would traditionally require:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  {[
+                    { agent: "ASO-Researcher", did: "Ran automated keyword research across App Store — found the coaching niche was saturated" },
+                    { agent: "Competitor-Intel", did: "Mined top 10 competitor reviews, extracted feature gaps and pricing" },
+                    { agent: "Indie-Vetter", did: "Modelled revenue potential — coaching didn't hit the $3-10k MRR threshold" },
+                    { agent: "Product-Scoper", did: "Found the real gap: no dedicated pacing app for Hyrox. Pivoted the spec." },
+                  ].map(({ agent, did }) => (
+                    <div key={agent} className="text-[12px]">
+                      <span className="font-mono text-[#2E6DB4] font-semibold">{agent}</span>
+                      <span className="text-[#5A6B85]"> — {did}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-[#F7F8FC] border border-[#E2E6F0] rounded-xl p-4 flex flex-col justify-center">
+                  <div className="text-[13px] text-[#5A6B85] leading-relaxed">
+                    <span className="font-semibold text-[#1A2B4A]">Result:</span> Killed the original idea. Pivoted to RoxPacer. The pipeline produced a complete product spec, brand brief, and go-to-market strategy — all before writing a single line of code.
+                  </div>
+                  <div className="mt-3 text-[11px] text-[#7A8BA5]">
+                    Traditionally: 1 researcher + 1 analyst + 1 PM · 2-3 weeks.
+                    <br />
+                    With the system: 4 agents · hours.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ═══════════════════════════════════════════ CAG DEEP DIVE */}
       <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-24 bg-white border-t border-[#E2E6F0]">
         <div className="max-w-3xl mx-auto">
@@ -193,70 +335,6 @@ export default function App() {
                   <div className="text-xs text-[#7A8BA5] mt-1">{label}</div>
                 </div>
               ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════ HOW I WORK / AIOS */}
-      <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-24 bg-[#F0F2F8] border-t border-[#E2E6F0]">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-4 block">
-              The Operating System
-            </span>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4A] leading-tight mb-6">
-              I don't just use AI agents.{" "}
-              <span className="text-[#2E6DB4]">I built a system that runs them.</span>
-            </h2>
-
-            <p className="text-[15px] text-[#5A6B85] leading-relaxed mb-8">
-              Beyond the 8 products, I built an AI-powered product operations system — 7 autonomous teams with 50+ specialised agents, persistent memory across sessions, and cross-team handoff protocols. Each team owns their outcomes. I set direction. It's product management at the systems level.
-            </p>
-
-            {/* Three-column grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              {[
-                {
-                  icon: <Users size={18} className="text-[#2E6DB4]" />,
-                  title: "7 Autonomous Teams",
-                  text: "Idea validation, marketing, content, design, sales, SEO, and quality oversight — each with a team lead, defined roles, and accountability for outcomes.",
-                },
-                {
-                  icon: <Cpu size={18} className="text-[#2E6DB4]" />,
-                  title: "50+ Specialised Agents",
-                  text: "Named agents with persistent memory: Radar scouts trends, Pixel designs, Sentinel audits quality. Each agent has a defined scope and model selection.",
-                },
-                {
-                  icon: <Brain size={18} className="text-[#2E6DB4]" />,
-                  title: "3-Tier Memory System",
-                  text: "Global identity, org-wide intelligence, and team-specific state — context persists across sessions. No work is lost. Every decision compounds.",
-                },
-              ].map(({ icon, title, text }) => (
-                <div
-                  key={title}
-                  className="bg-white border border-[#E2E6F0] shadow-sm rounded-2xl p-5"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-[#EBF2FA] flex items-center justify-center mb-3">
-                    {icon}
-                  </div>
-                  <div className="text-sm font-semibold text-[#1A2B4A] mb-1.5">{title}</div>
-                  <div className="text-[12px] text-[#5A6B85] leading-relaxed">{text}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Callout box */}
-            <div className="bg-white border border-[#E2E6F0] rounded-2xl p-5">
-              <p className="text-[13px] text-[#5A6B85] leading-relaxed m-0">
-                <span className="font-semibold text-[#1A2B4A]">This system produced</span> the competitive analysis, API research, product prototypes, and interview prep packages behind everything on this page. The 8 products are the output. The operating system is the capability.
-              </p>
             </div>
           </motion.div>
         </div>
