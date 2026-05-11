@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown, ExternalLink, Search, Code2, Package } from "lucide-react"
+import { ChevronDown, ExternalLink, Search, Code2, Package, Cpu, Users, Brain } from "lucide-react"
 import { PRODUCTS } from "./data/products"
 import { StatBadge } from "./components/StatBadge"
 
@@ -193,6 +193,70 @@ export default function App() {
                   <div className="text-xs text-[#7A8BA5] mt-1">{label}</div>
                 </div>
               ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════ HOW I WORK / AIOS */}
+      <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-24 bg-[#F0F2F8] border-t border-[#E2E6F0]">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-4 block">
+              The Operating System
+            </span>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4A] leading-tight mb-6">
+              I don't just use AI agents.{" "}
+              <span className="text-[#2E6DB4]">I built a system that runs them.</span>
+            </h2>
+
+            <p className="text-[15px] text-[#5A6B85] leading-relaxed mb-8">
+              Beyond the 8 products, I built an AI-powered product operations system — 7 autonomous teams with 50+ specialised agents, persistent memory across sessions, and cross-team handoff protocols. Each team owns their outcomes. I set direction. It's product management at the systems level.
+            </p>
+
+            {/* Three-column grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              {[
+                {
+                  icon: <Users size={18} className="text-[#2E6DB4]" />,
+                  title: "7 Autonomous Teams",
+                  text: "Idea validation, marketing, content, design, sales, SEO, and quality oversight — each with a team lead, defined roles, and accountability for outcomes.",
+                },
+                {
+                  icon: <Cpu size={18} className="text-[#2E6DB4]" />,
+                  title: "50+ Specialised Agents",
+                  text: "Named agents with persistent memory: Radar scouts trends, Pixel designs, Sentinel audits quality. Each agent has a defined scope and model selection.",
+                },
+                {
+                  icon: <Brain size={18} className="text-[#2E6DB4]" />,
+                  title: "3-Tier Memory System",
+                  text: "Global identity, org-wide intelligence, and team-specific state — context persists across sessions. No work is lost. Every decision compounds.",
+                },
+              ].map(({ icon, title, text }) => (
+                <div
+                  key={title}
+                  className="bg-white border border-[#E2E6F0] shadow-sm rounded-2xl p-5"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-[#EBF2FA] flex items-center justify-center mb-3">
+                    {icon}
+                  </div>
+                  <div className="text-sm font-semibold text-[#1A2B4A] mb-1.5">{title}</div>
+                  <div className="text-[12px] text-[#5A6B85] leading-relaxed">{text}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Callout box */}
+            <div className="bg-white border border-[#E2E6F0] rounded-2xl p-5">
+              <p className="text-[13px] text-[#5A6B85] leading-relaxed m-0">
+                <span className="font-semibold text-[#1A2B4A]">This system produced</span> the competitive analysis, API research, product prototypes, and interview prep packages behind everything on this page. The 8 products are the output. The operating system is the capability.
+              </p>
             </div>
           </motion.div>
         </div>
