@@ -1,19 +1,25 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown, ExternalLink, Search, Code2, Package, Cpu, Users, Brain } from "lucide-react"
+import { ChevronDown, ExternalLink, Search, Code2, Package, Mail } from "lucide-react"
 import { PRODUCTS } from "./data/products"
 import { StatBadge } from "./components/StatBadge"
 
 // ── PM Portfolio Page ─────────────────────────────────────────────────────────
 
+const FEATURED_IDS = [8, 6, 5] // FieldCheck, RoxPacer, DayOne
+const COMPACT_IDS = [2, 3, 7, 9] // CoachConnect, Stenify, Beacon, MrWhite
+
 export default function App() {
   const [expandedId, setExpandedId] = useState(null)
   const toggle = (id) => setExpandedId(expandedId === id ? null : id)
 
-  const gridProducts = PRODUCTS.filter(p => p.id !== 4) // CAG has its own deep-dive
+  const featuredProducts = FEATURED_IDS.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean)
+  const compactProducts = COMPACT_IDS.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean)
 
   return (
     <div className="min-h-screen bg-[#F7F8FC] text-[#1A2B4A]" style={{ fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+
+      <FloatingCTA />
 
       {/* ════════════════════════════════════════════════════════ HERO */}
       <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 xl:px-28 py-20 md:py-0 overflow-hidden">
@@ -28,17 +34,17 @@ export default function App() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                Product Management · Singapore
+                Desmond de Moussac · Product Management · Singapore
               </motion.span>
 
               <motion.h1
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#1A2B4A] leading-[1.05] mb-5"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A2B4A] leading-[1.08] mb-6"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               >
-                Desmond<br />
-                <span className="text-[#2E6DB4]">de Moussac</span>
+                I shipped an AI tool to 20,000 users at Changi Airport.{" "}
+                <span className="text-[#2E6DB4]">Nobody asked me to.</span>
               </motion.h1>
 
               <motion.p
@@ -47,12 +53,10 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.15 }}
               >
-                Aeronautics degree. I don't write code.
                 I scope problems, architect solutions, and ship production software using AI agents.{" "}
-                <span className="font-semibold text-[#3D4F6A]">{PRODUCTS.length} products shipped</span>
-                {" "}— one deployed to{" "}
-                <span className="font-semibold text-[#3D4F6A]">20,000 users</span>
-                {" "}at Changi Airport Group. Each one forced a different product decision. Those decisions are the story.
+                <span className="font-semibold text-[#3D4F6A]">{PRODUCTS.length} products shipped solo</span>
+                {" "}— a paid client system, two iOS App Store apps, and an enterprise AI tool among them.
+                Each one forced a different product decision. Those decisions are the story.
               </motion.p>
 
               <motion.div
@@ -82,10 +86,10 @@ export default function App() {
                   Download Resume
                 </a>
                 <a
-                  href="#products"
+                  href="#case-study"
                   className="px-6 py-3 bg-[#EBF2FA] hover:bg-[#2E6DB4] text-[#2E6DB4] hover:text-white rounded-xl font-medium transition-colors duration-200 text-sm"
                 >
-                  See the products ↓
+                  See the proof ↓
                 </a>
                 <a
                   href="https://www.linkedin.com/in/desmondddm"
@@ -129,8 +133,120 @@ export default function App() {
             <StatBadge n={String(PRODUCTS.length)} label="Products Shipped" />
             <StatBadge n={String(PRODUCTS.filter(p => p.status.toLowerCase().includes("live")).length)} label="Live Products" />
             <StatBadge n="20k+" label="Enterprise Users" accent />
-            <StatBadge n="3+" label="Years at CAG" />
+            <StatBadge n="7+" label="Years in Airport Ops" />
           </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════ CAG DEEP DIVE */}
+      <section id="case-study" className="px-6 md:px-12 lg:px-20 xl:px-28 py-24 bg-[#1A2B4A]">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-[11px] font-mono text-[#7FB0E0] tracking-[0.2em] uppercase mb-4 block">
+              Case Study · Changi Airport Group
+            </span>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-6">
+              20,000 users.{" "}
+              <span className="text-[#7FB0E0]">From a problem I saw on the ground.</span>
+            </h2>
+
+            <div className="space-y-6 text-[15px] text-[#B8C5D9] leading-relaxed">
+              <div>
+                <div className="text-[11px] font-mono text-[#7FB0E0] tracking-[0.15em] uppercase mb-2">The problem</div>
+                <p className="m-0">
+                  My portfolio at CAG included security promotion. Ground officers constantly asked the same question: does this bag count as unattended? The policy was clear on paper, but in practice — different sizes, different contexts, different lighting — officers made inconsistent calls. In a safety-critical environment, inconsistency is a risk.
+                </p>
+              </div>
+
+              <div>
+                <div className="text-[11px] font-mono text-[#7FB0E0] tracking-[0.15em] uppercase mb-2">The product decision</div>
+                <p className="m-0">
+                  I knew from ground experience that the core issue was size-based judgement. AI could solve this — point a camera at a bag, get a consistent answer. I scoped the tool, architected the solution with Google Gemini's computer vision, and built it. The hardest part wasn't the technology. It was training the model against our ground knowledge: dozens of edge cases, each tested through trial and error until accuracy was reliable.
+                </p>
+              </div>
+
+              <div>
+                <div className="text-[11px] font-mono text-[#7FB0E0] tracking-[0.15em] uppercase mb-2">Stakeholder alignment & launch</div>
+                <p className="m-0">
+                  Once I could prove accuracy to my EVP, there was little resistance. We held a launch event with stakeholders to drive initial adoption. But launch wasn't the finish line — it was the start of a sustained engagement effort.
+                </p>
+              </div>
+
+              <div>
+                <div className="text-[11px] font-mono text-[#7FB0E0] tracking-[0.15em] uppercase mb-2">Post-launch metrics & engagement</div>
+                <p className="m-0">
+                  We tracked adoption rates, usage frequency, and whether reported incidents were genuine — the core success metric. To sustain engagement, I ran monthly quiz campaigns with vouchers. The tool is now in production use by 20,000+ Changi Airport staff.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 grid grid-cols-3 gap-4">
+              {[
+                { n: "20k+", label: "Staff deployed to" },
+                { n: "Monthly", label: "Engagement campaigns" },
+                { n: "Solo", label: "Scoped, built, launched" },
+              ].map(({ n, label }) => (
+                <div key={label} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                  <div className="text-2xl font-bold text-[#7FB0E0]">{n}</div>
+                  <div className="text-xs text-[#8B9BB5] mt-1">{label}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════ PRODUCT GRID */}
+      <section id="products" className="px-6 md:px-12 lg:px-20 xl:px-28 py-24">
+        <div className="max-w-5xl mx-auto">
+
+          <motion.div
+            className="mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-3 block">
+              What I've Shipped
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4A] mb-3">
+              {PRODUCTS.length} products. Each one taught me something different.
+            </h2>
+            <p className="text-sm text-[#7A8BA5]">
+              Click any card for the problem, the solution, and the lesson.
+            </p>
+          </motion.div>
+
+          {/* Featured row */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
+            {featuredProducts.map((product) => (
+              <FeaturedPMCard
+                key={product.id}
+                product={product}
+                isOpen={expandedId === product.id}
+                onToggle={() => toggle(product.id)}
+              />
+            ))}
+          </div>
+
+          {/* Compact row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {compactProducts.map((product) => (
+              <CompactPMCard
+                key={product.id}
+                product={product}
+                isOpen={expandedId === product.id}
+                onToggle={() => toggle(product.id)}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -144,7 +260,7 @@ export default function App() {
             transition={{ duration: 0.6 }}
           >
             <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-4 block">
-              The Operating System
+              How I Ship This Much
             </span>
 
             <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4A] leading-tight mb-6">
@@ -152,11 +268,8 @@ export default function App() {
               <span className="text-[#2E6DB4]">The output of an entire product org.</span>
             </h2>
 
-            <p className="text-[15px] text-[#5A6B85] leading-relaxed mb-3">
-              Most product teams need separate people for research, competitive analysis, design, content, SEO, outreach, and quality oversight. I built an AI operating system that does the work of those teams — with me as the only human in the loop. The result: I ship products at a pace and breadth that shouldn't be possible for one person.
-            </p>
-            <p className="text-[15px] text-[#1A2B4A] leading-relaxed font-medium mb-8">
-              This is the kind of system I'd build for your team. Imagine your product org with AI-native workflows — where research that takes a week runs in hours, where competitive analysis updates itself, and where quality oversight audits every output before it ships.
+            <p className="text-[15px] text-[#5A6B85] leading-relaxed mb-8">
+              Most product teams need separate people for research, competitive analysis, design, content, and quality oversight. I built an AI operating system that does the work of those teams — with me as the only human in the loop. This is the kind of AI-native workflow I'd bring to your product org.
             </p>
 
             {/* The comparison */}
@@ -208,38 +321,6 @@ export default function App() {
               </div>
             </div>
 
-            {/* Architecture detail */}
-            <div className="mb-6">
-              <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-4">Under The Hood</div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {[
-                  {
-                    icon: <Users size={18} className="text-[#2E6DB4]" />,
-                    title: "Named Agent Teams",
-                    text: "Each team has a lead (Orchestrator, Radar, Pixel, Vex, Sentinel) and specialised agents with defined roles. Agents are selected by capability — Haiku for fast lookups, Sonnet for code, Opus for strategy.",
-                  },
-                  {
-                    icon: <Cpu size={18} className="text-[#2E6DB4]" />,
-                    title: "Cross-Team Handoffs",
-                    text: "Work flows between teams via structured handoff tickets: Validation → Design (brief → prototype), Content → Social (long-form → distribution), All Teams → Oversight (outputs → audit).",
-                  },
-                  {
-                    icon: <Brain size={18} className="text-[#2E6DB4]" />,
-                    title: "Persistent Memory",
-                    text: "3-tier memory: global identity, org-wide intelligence, and team-specific state. Context persists across sessions. Decisions compound. Nothing is lost between conversations.",
-                  },
-                ].map(({ icon, title, text }) => (
-                  <div key={title} className="bg-white border border-[#E2E6F0] shadow-sm rounded-2xl p-5">
-                    <div className="w-8 h-8 rounded-lg bg-[#EBF2FA] flex items-center justify-center mb-3">
-                      {icon}
-                    </div>
-                    <div className="text-sm font-semibold text-[#1A2B4A] mb-1.5">{title}</div>
-                    <div className="text-[12px] text-[#5A6B85] leading-relaxed">{text}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Proof: real scenario */}
             <div className="bg-white border border-[#E2E6F0] rounded-2xl p-5">
               <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-3">Real Example — Product Validation Pipeline</div>
@@ -276,72 +357,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════ CAG DEEP DIVE */}
-      <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-24 bg-white border-t border-[#E2E6F0]">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-4 block">
-              Case Study · Changi Airport Group
-            </span>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4A] leading-tight mb-6">
-              20,000 users.{" "}
-              <span className="text-[#2E6DB4]">Nobody asked me to build it.</span>
-            </h2>
-
-            <div className="space-y-6 text-[15px] text-[#5A6B85] leading-relaxed">
-              <div>
-                <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-2">The problem</div>
-                <p className="m-0">
-                  My portfolio at CAG included security promotion. Ground officers constantly asked the same question: does this bag count as unattended? The policy was clear on paper, but in practice — different sizes, different contexts, different lighting — officers made inconsistent calls. In a safety-critical environment, inconsistency is a risk.
-                </p>
-              </div>
-
-              <div>
-                <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-2">The product decision</div>
-                <p className="m-0">
-                  I knew from ground experience that the core issue was size-based judgement. AI could solve this — point a camera at a bag, get a consistent answer. I scoped the tool, architected the solution with Google Gemini's computer vision, and built it. The hardest part wasn't the technology. It was training the model against our ground knowledge: dozens of edge cases, each tested through trial and error until accuracy was reliable.
-                </p>
-              </div>
-
-              <div>
-                <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-2">Stakeholder alignment & launch</div>
-                <p className="m-0">
-                  Once I could prove accuracy to my EVP, there was little resistance. We held a launch event with stakeholders to drive initial adoption. But launch wasn't the finish line — it was the start of a sustained engagement effort.
-                </p>
-              </div>
-
-              <div>
-                <div className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.15em] uppercase mb-2">Post-launch metrics & engagement</div>
-                <p className="m-0">
-                  We tracked adoption rates, usage frequency, and whether reported incidents were genuine — the core success metric. To sustain engagement, I ran monthly quiz campaigns with vouchers. The tool is now in production use by 20,000+ Changi Airport staff.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 grid grid-cols-3 gap-4">
-              {[
-                { n: "20k+", label: "Staff deployed to" },
-                { n: "Monthly", label: "Engagement campaigns" },
-                { n: "Solo", label: "Scoped, built, launched" },
-              ].map(({ n, label }) => (
-                <div key={label} className="bg-[#F7F8FC] border border-[#E2E6F0] rounded-xl p-4 text-center">
-                  <div className="text-2xl font-bold text-[#2E6DB4]">{n}</div>
-                  <div className="text-xs text-[#7A8BA5] mt-1">{label}</div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* ═══════════════════════════════════════════════ PM BRIDGE */}
-      <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-24 bg-[#F0F2F8]">
+      <section className="px-6 md:px-12 lg:px-20 xl:px-28 py-24 bg-white border-t border-[#E2E6F0]">
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -392,7 +409,7 @@ export default function App() {
               ].map(({ icon, title, text }) => (
                 <div
                   key={title}
-                  className="bg-white border border-[#E2E6F0] shadow-sm rounded-2xl p-5"
+                  className="bg-[#F7F8FC] border border-[#E2E6F0] shadow-sm rounded-2xl p-5"
                 >
                   <div className="w-8 h-8 rounded-lg bg-[#EBF2FA] flex items-center justify-center mb-3">
                     {icon}
@@ -409,8 +426,8 @@ export default function App() {
                 What I'm looking for
               </span>
               <p className="text-[15px] text-[#5A6B85] leading-relaxed">
-                Associate PM or PM at a startup or scale-up in Singapore — especially where
-                individual product decisions still have real weight. I bring architectural
+                PM roles in Singapore where individual product decisions still have real weight —
+                especially AI products, digital transformation, or 0-to-1 builds. I bring architectural
                 fluency to talk to engineers as a peer, automated research workflows most PMs can't
                 build, and enough scar tissue from {PRODUCTS.length} shipped products to know when to cut scope.{" "}
                 <a
@@ -422,41 +439,6 @@ export default function App() {
               </p>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════ PRODUCT GRID */}
-      <section id="products" className="px-6 md:px-12 lg:px-20 xl:px-28 py-24">
-        <div className="max-w-4xl mx-auto">
-
-          <motion.div
-            className="mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="text-[11px] font-mono text-[#2E6DB4] tracking-[0.2em] uppercase mb-3 block">
-              What I've Shipped
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4A] mb-3">
-              {PRODUCTS.length} products. Each one taught me something different.
-            </h2>
-            <p className="text-sm text-[#7A8BA5]">
-              Click any card to see the problem, the solution, and the lesson.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {gridProducts.map((product) => (
-              <CompactPMCard
-                key={product.id}
-                product={product}
-                isOpen={expandedId === product.id}
-                onToggle={() => toggle(product.id)}
-              />
-            ))}
-          </div>
         </div>
       </section>
 
@@ -472,7 +454,14 @@ export default function App() {
                 <div className="text-sm font-semibold text-[#1A2B4A]">Implementation Manager (Airport Operations)</div>
                 <div className="text-sm text-[#5A6B85]">Changi Airport Group</div>
               </div>
-              <div className="text-xs text-[#7A8BA5] font-mono">2023 – present</div>
+              <div className="text-xs text-[#7A8BA5] font-mono">2022 – present</div>
+            </div>
+            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+              <div>
+                <div className="text-sm font-semibold text-[#1A2B4A]">Airport Operations</div>
+                <div className="text-sm text-[#5A6B85]">Certis — government-linked security environment</div>
+              </div>
+              <div className="text-xs text-[#7A8BA5] font-mono">2019 – 2022</div>
             </div>
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
               <div>
@@ -517,6 +506,151 @@ export default function App() {
       </footer>
 
     </div>
+  )
+}
+
+// ── Floating CTA ──────────────────────────────────────────────────────────────
+
+function FloatingCTA() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 600)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.a
+          href="mailto:desmond@mouss.ac"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-[#2E6DB4] hover:bg-[#245A9A] text-white rounded-full font-medium text-sm shadow-lg transition-colors duration-200"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 16 }}
+          transition={{ duration: 0.25 }}
+        >
+          <Mail size={16} />
+          Get in touch
+        </motion.a>
+      )}
+    </AnimatePresence>
+  )
+}
+
+// ── Featured PM Card ──────────────────────────────────────────────────────────
+
+function FeaturedPMCard({ product, isOpen, onToggle }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+    >
+      <div
+        className="bg-white border-2 rounded-2xl overflow-hidden transition-all duration-200 hover:shadow-md shadow-sm cursor-pointer h-full"
+        style={{ borderColor: isOpen ? product.accent : "#E2E6F0" }}
+        onClick={onToggle}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onToggle()}
+      >
+        <div className="p-5">
+          {/* Meta */}
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[11px] font-mono text-[#7A8BA5]">{product.year}</span>
+            <span className="text-[#B0BAC9]">·</span>
+            <span className="text-[11px] text-[#7A8BA5]">{product.role}</span>
+          </div>
+
+          {/* Name + tagline */}
+          <h3 className="text-lg font-bold text-[#1A2B4A] leading-tight mb-1">
+            {product.name}
+          </h3>
+          <p className="text-[13px] text-[#5A6B85] mb-3 leading-relaxed">{product.tagline}</p>
+
+          {/* Metrics — always visible */}
+          <div className="grid grid-cols-2 gap-3 mb-4">
+            {[product.metric, product.metric2].filter(Boolean).map(({ value, label }) => (
+              <div key={label} className="bg-[#F7F8FC] border border-[#E2E6F0] rounded-xl p-3 text-center">
+                <div className="text-xl font-bold" style={{ color: product.accent }}>{value}</div>
+                <div className="text-[10px] text-[#7A8BA5] mt-0.5">{label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Status */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className={`text-[11px] border rounded-md px-2 py-0.5 ${product.statusColor}`}>
+              {product.status}
+            </span>
+            {product.href ? (
+              <a
+                href={product.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] text-[#7A8BA5] hover:text-[#2E6DB4] flex items-center gap-1 transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {product.url}
+                <ExternalLink size={10} />
+              </a>
+            ) : (
+              <span className="text-[11px] text-[#7A8BA5]">{product.url}</span>
+            )}
+          </div>
+
+          {/* Lesson punchline — always visible */}
+          <div className="pt-3 border-t border-[#E2E6F0] flex items-start justify-between gap-3">
+            <div className="flex-1 min-w-0">
+              <div className="text-[10px] font-bold text-[#7A8BA5] uppercase tracking-widest mb-1">{product.wallLabel}</div>
+              <p className="text-[13px] text-[#1A2B4A] italic leading-relaxed m-0">"{product.lesson}"</p>
+            </div>
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.25 }}
+              className="text-[#2E6DB4] flex-shrink-0 mt-1"
+            >
+              <ChevronDown size={18} />
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Expanded detail */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="border-t border-[#E2E6F0] px-5 pb-5 pt-4 space-y-4">
+                <div className="bg-[#E8F5EE] border border-[#1A8754]/25 rounded-xl p-3">
+                  <span className="text-[10px] font-bold text-[#1A8754] uppercase tracking-widest">Outcome</span>
+                  <p className="text-sm text-[#1A2B4A] mt-1.5 leading-relaxed m-0">{product.outcome}</p>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[#C0392B] uppercase tracking-widest">The Problem</span>
+                  <p className="text-sm text-[#5A6B85] mt-1.5 leading-relaxed m-0">{product.problem}</p>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[#1A8754] uppercase tracking-widest">The Solution</span>
+                  <p className="text-sm text-[#5A6B85] mt-1.5 leading-relaxed m-0">{product.solution}</p>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[#7A8BA5] uppercase tracking-widest">The Lesson — {product.wallLabel}</span>
+                  <p className="text-sm text-[#5A6B85] mt-1.5 leading-relaxed m-0">{product.wall}</p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
   )
 }
 
