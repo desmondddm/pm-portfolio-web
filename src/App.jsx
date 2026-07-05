@@ -78,30 +78,30 @@ export default function App() {
                 transition={{ duration: 0.65, delay: 0.38 }}
               >
                 <a
+                  href="#case-study"
+                  className="px-6 py-3 bg-[#2E6DB4] hover:bg-[#245A9A] text-white rounded-xl font-medium transition-colors duration-200 text-sm"
+                >
+                  See the proof ↓
+                </a>
+                <a
                   href="/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-[#2E6DB4] hover:bg-[#245A9A] text-white rounded-xl font-medium transition-colors duration-200 text-sm"
+                  className="px-6 py-3 bg-[#EBF2FA] hover:bg-[#D4E0F0] text-[#2E6DB4] rounded-xl font-medium transition-colors duration-200 text-sm"
                 >
                   Download Resume
-                </a>
-                <a
-                  href="#case-study"
-                  className="px-6 py-3 bg-[#EBF2FA] hover:bg-[#2E6DB4] text-[#2E6DB4] hover:text-white rounded-xl font-medium transition-colors duration-200 text-sm"
-                >
-                  See the proof ↓
                 </a>
                 <a
                   href="https://www.linkedin.com/in/desmondddm"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 border border-[#E2E6F0] hover:border-[#2E6DB4] text-[#3D4F6A] hover:text-[#2E6DB4] rounded-xl font-medium transition-all duration-200 text-sm"
+                  className="px-2 py-3 text-sm font-medium text-[#5A6B85] hover:text-[#2E6DB4] transition-colors duration-200"
                 >
                   LinkedIn
                 </a>
                 <a
                   href="mailto:desmond@mouss.ac"
-                  className="px-6 py-3 border border-[#E2E6F0] hover:border-[#2E6DB4] text-[#3D4F6A] hover:text-[#2E6DB4] rounded-xl font-medium transition-all duration-200 text-sm"
+                  className="px-2 py-3 text-sm font-medium text-[#5A6B85] hover:text-[#2E6DB4] transition-colors duration-200"
                 >
                   desmond@mouss.ac
                 </a>
@@ -167,7 +167,7 @@ export default function App() {
               <div>
                 <div className="text-[11px] font-mono text-[#7FB0E0] tracking-[0.15em] uppercase mb-2">The product decision</div>
                 <p className="m-0">
-                  I knew from ground experience that the core issue was size-based judgement. AI could solve this — point a camera at a bag, get a consistent answer. I scoped the tool, architected the solution with Google Gemini's computer vision, and built it. The hardest part wasn't the technology. It was training the model against our ground knowledge: dozens of edge cases, each tested through trial and error until accuracy was reliable.
+                  I knew from ground experience that the core issue was size-based judgement. AI could solve this — point a camera at a bag, get a consistent answer. I scoped the tool, architected the solution with Google Gemini's computer vision, and built it. The hardest part wasn't the technology. It was training the model against our ground knowledge: dozens of edge cases, each tested through trial and error until reporting accuracy rose from 60% to 95%.
                 </p>
               </div>
 
@@ -189,7 +189,7 @@ export default function App() {
             <div className="mt-8 grid grid-cols-3 gap-4">
               {[
                 { n: "20k+", label: "Staff deployed to" },
-                { n: "Monthly", label: "Engagement campaigns" },
+                { n: "60→95%", label: "Reporting accuracy" },
                 { n: "Solo", label: "Scoped, built, launched" },
               ].map(({ n, label }) => (
                 <div key={label} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
@@ -383,9 +383,9 @@ export default function App() {
               That's PM work — I just didn't have the title or the permission.
             </p>
             <p className="text-[15px] text-[#1A2B4A] leading-relaxed">
-              I understand architecture — databases, APIs, auth flows, deployment — and I use
-              AI agents (Claude Code, Cursor, Lovable) to build production software. {PRODUCTS.length} products shipped this way. The result: I can prototype and validate
-              at the speed of thought. No waiting for engineering. No spec that sits in a backlog.
+              Outside the day job, I ship with AI agents — {PRODUCTS.length} products this way. The result: I can
+              prototype and validate at the speed of thought. No waiting for engineering. No spec that
+              sits in a backlog.
             </p>
 
             {/* Three pillars */}
@@ -461,11 +461,11 @@ export default function App() {
                 <div className="text-sm font-semibold text-[#1A2B4A]">Airport Operations</div>
                 <div className="text-sm text-[#5A6B85]">Certis — government-linked security environment</div>
               </div>
-              <div className="text-xs text-[#7A8BA5] font-mono">2019 – 2022</div>
+              <div className="text-xs text-[#7A8BA5] font-mono">2018 – 2022</div>
             </div>
             <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
               <div>
-                <div className="text-sm font-semibold text-[#1A2B4A]">B.Eng Aeronautical Engineering</div>
+                <div className="text-sm font-semibold text-[#1A2B4A]">BS Aeronautics</div>
                 <div className="text-sm text-[#5A6B85]">Embry-Riddle Aeronautical University</div>
               </div>
               <div className="text-xs text-[#7A8BA5] font-mono">2018</div>
